@@ -45,14 +45,26 @@ with style_image:
         StyleColumnTitle, StyleImageSelectionPrompt, "Style", "style"
     )
 
-# STYLIZE CONTENT IMAGE
-stylize_image = st.button("🖼️🖌️🎨 Start Neural Style Transfer 🖼️🖌️🎨")
+if None not in (content_image_file, style_image_file):
 
-if stylize_image:
-    final_image = stylize_content_image(model, content_image_file, style_image_file)
-    st.write("# Styled Image:")
-    st.image(final_image)
-    try:
-        remove_source_images()
-    except:
-        pass
+    # CLEAR IMAGES
+    clear_images = st.button(
+        label="🔄❌ Clear Image Cache ❌🔄",
+        on_click=remove_source_images(),
+    )
+
+    # STYLIZE CONTENT IMAGE
+    stylize_image = st.button("🖼️🖌️🎨 Start Neural Style Transfer 🖼️🖌️🎨")
+
+    if stylize_image:
+        final_image = stylize_content_image(model, content_image_file, style_image_file)
+        st.write("# Styled Image:")
+        st.image(final_image)
+        try:
+            remove_source_images()
+        except:
+            pass
+
+
+else:
+    st.write("Please upload content and style image to go to next step.")
