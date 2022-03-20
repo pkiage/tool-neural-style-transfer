@@ -34,24 +34,26 @@ content_image, style_image = st.columns(2)
 with content_image:
     ContentColumnTitle = "## 🖼️ Content Image 🖼️"
     ContentImageSelectionPrompt = "Pick a Content image"
-    content_image_file, content_image_upload_method = upload_image(
+    content_image_file = upload_image(
         ContentColumnTitle, ContentImageSelectionPrompt, "Content", "content"
     )
 
 with style_image:
     StyleColumnTitle = "## 🎨 Style Image 🎨"
     StyleImageSelectionPrompt = "Pick a Style image"
-    style_image_file, style_image_upload_method = upload_image(
+    style_image_file = upload_image(
         StyleColumnTitle, StyleImageSelectionPrompt, "Style", "style"
     )
 
 if None not in (content_image_file, style_image_file):
-    if "🔗 URL" in (content_image_upload_method, style_image_upload_method):
+    try:
         # CLEAR IMAGES
         clear_images = st.button(
-            label="🔄❌ Clear URL Image Cache ❌🔄",
+            label="🔄❌ Clear Image Cache ❌🔄",
             on_click=remove_source_images(),
         )
+    except:
+        pass
 
     # STYLIZE CONTENT IMAGE
     stylize_image = st.button("🖼️🖌️🎨 Start Neural Style Transfer 🖼️🖌️🎨")
@@ -64,7 +66,6 @@ if None not in (content_image_file, style_image_file):
             remove_source_images()
         except:
             pass
-
 
 else:
     st.write("Please upload content and style image to go to next step.")
