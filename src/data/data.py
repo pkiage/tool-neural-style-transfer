@@ -48,6 +48,6 @@ def upload_image(ColumnTitle, ImageSelectionPrompt, ImageType, KeyString):
     try:
         st.write(f"{ImageType} Image")
         st.image(imshow(image_file))
-        return image_file
+        return image_file, image_upload_method
     except:
         pass
