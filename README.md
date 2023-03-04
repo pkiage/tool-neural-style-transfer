@@ -1,3 +1,15 @@
+---
+title: fast_arbitrary_image_style_transfer
+emoji: 🎨
+colorFrom: indigo
+colorTo: blue
+sdk: streamlit
+sdk_version: 1.3.0
+app_file: app.py
+pinned: false
+license: openrail
+---
+
 # Setup and Installation
 ## Install Requirements
 ```shell
