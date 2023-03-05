@@ -1,5 +1,5 @@
 ---
-title: fast_arbitrary_image_style_transfer
+title: Fast Arbitrary Image Style Transfer
 emoji: 🎨
 colorFrom: indigo
 colorTo: blue
